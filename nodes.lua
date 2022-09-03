@@ -345,3 +345,55 @@ register_node("maptools:drowning", {
 	drowning = 1,
 	sunlight_propagates = true,
 })
+
+for i=2,20,2 do
+minetest.register_node("maptools:slower_"..i, {
+	description = "Slower "..i,
+	range = 12,
+	stack_max = 10000,
+	inventory_image = "default_steel_block.png^default_papyrus.png",
+	drawtype = "airlike",
+	walkable = false,
+	move_resistance = i,
+	pointable = false,
+	paramtype = "light",
+	sunlight_propagates = true,
+	drop = "",
+	groups = {unbreakable = 1, not_in_creative_inventory = maptools.creative},
+	on_drop = maptools.drop_msg
+})
+end
+
+for i=2,20,2 do
+minetest.register_node("maptools:booster_"..i, {
+	description = "Booster "..i,
+	range = 12,
+	stack_max = 10000,
+	inventory_image = "default_steel_block.png^default_bush_stem.png^[transform1",
+	drawtype = "airlike",
+	walkable = false,
+	move_resistance = -i,
+	pointable = false,
+	paramtype = "light",
+	sunlight_propagates = true,
+	drop = "",
+	groups = {unbreakable = 1, not_in_creative_inventory = maptools.creative},
+	on_drop = maptools.drop_msg
+})
+end
+
+minetest.register_node("maptools:heal", {
+	description = "Healing Block",
+	range = 12,
+	stack_max = 10000,
+	inventory_image = "default_steel_block.png^heart.png",
+	drawtype = "airlike",
+	walkable = false,
+	pointable = false,
+	damage_per_second = "-1",
+	paramtype = "light",
+	sunlight_propagates = true,
+	drop = "",
+	groups = {unbreakable = 1, not_in_creative_inventory = 1},
+	on_drop = maptools.drop_msg
+})
